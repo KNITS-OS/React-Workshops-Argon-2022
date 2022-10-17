@@ -27,51 +27,51 @@ var routes = [
   {
     path: "/index",
     name: "Dashboard",
-    icon: "ni ni-tv-2 text-primary",
+    icon: "ni ni-tv-2 text-info",
     component: Index,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/icons",
     name: "Icons",
-    icon: "ni ni-planet text-blue",
+    icon: "ni ni-planet text-info",
     component: Icons,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/maps",
     name: "Maps",
-    icon: "ni ni-pin-3 text-orange",
+    icon: "ni ni-pin-3 text-info",
     component: Maps,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/user-profile",
     name: "User Profile",
-    icon: "ni ni-single-02 text-yellow",
+    icon: "ni ni-single-02 text-primary",
     component: Profile,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/tables",
     name: "Tables",
-    icon: "ni ni-bullet-list-67 text-red",
+    icon: "ni ni-bullet-list-67 text-info",
     component: Tables,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/login",
     name: "Login",
     icon: "ni ni-key-25 text-info",
     component: Login,
-    layout: "/auth"
+    layout: "/auth",
   },
   {
     path: "/register",
     name: "Register",
-    icon: "ni ni-circle-08 text-pink",
+    icon: "ni ni-circle-08 text-info",
     component: Register,
-    layout: "/auth"
-  }
+    layout: "/auth",
+  },
 ];
 export default routes;
