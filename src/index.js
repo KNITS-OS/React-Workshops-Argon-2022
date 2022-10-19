@@ -22,6 +22,10 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import "assets/plugins/nucleo/css/nucleo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/css/argon-dashboard-react.css";
+import "./assets/css/site.css";
+import "sweetalert2/dist/sweetalert2.min.css";
+
+import "components/widgets/react-table/styles/reactTable.css";
 
 import AdminLayout from "layouts/Admin.js";
 import AuthLayout from "layouts/Auth.js";

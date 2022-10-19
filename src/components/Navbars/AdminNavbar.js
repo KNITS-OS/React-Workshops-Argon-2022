@@ -31,10 +31,10 @@ import {
   Navbar,
   Nav,
   Container,
-  Media
+  Media,
 } from "reactstrap";
 
-const AdminNavbar = (props) => {
+export const AdminNavbar = (props) => {
   return (
     <>
       <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
@@ -107,5 +107,3 @@ const AdminNavbar = (props) => {
     </>
   );
 };
-
-export default AdminNavbar;

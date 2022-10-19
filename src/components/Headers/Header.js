@@ -19,7 +19,7 @@
 // reactstrap components
 import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
 
-const Header = () => {
+export const Header = () => {
   return (
     <>
       <div className="header bg-primary pb-8 pt-5 pt-md-8">
@@ -148,5 +148,3 @@ const Header = () => {
     </>
   );
 };
-
-export default Header;

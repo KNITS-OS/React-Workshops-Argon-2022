@@ -4532,6 +4532,9 @@ input[type="button"].btn-block {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 0.375rem;
+  margin-bottom: 30px;
+  box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
+  border: 0;
 }
 .card > hr {
   margin-right: 0;
@@ -19542,7 +19545,6 @@ td.rdtYear:hover {
   border-bottom-right-radius: 0;
 }
 .form-group .rdt {
-  width: 1%;
   margin-bottom: 0;
   flex: 1 1 auto;
 }

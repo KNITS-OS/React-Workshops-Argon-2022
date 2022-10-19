@@ -18,8 +18,7 @@
 
 // reactstrap components
 import { Button, Container, Row, Col } from "reactstrap";
-
-const UserHeader = () => {
+export const UserHeader = () => {
   return (
     <>
       <div
@@ -29,7 +28,7 @@ const UserHeader = () => {
           backgroundImage:
             "url(" + require("../../assets/img/theme/profile-cover.jpg") + ")",
           backgroundSize: "cover",
-          backgroundPosition: "center top"
+          backgroundPosition: "center top",
         }}
       >
         {/* Mask */}
@@ -57,5 +56,3 @@ const UserHeader = () => {
     </>
   );
 };
-
-export default UserHeader;
