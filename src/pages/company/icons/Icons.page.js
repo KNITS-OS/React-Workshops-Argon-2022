@@ -31,7 +31,7 @@ import {
 // core components
 import { Header } from "components/headers";
 
-export const Icons = () => {
+export const IconsPage = () => {
   const [copiedText, setCopiedText] = useState();
   return (
     <>

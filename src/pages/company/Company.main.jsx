@@ -26,8 +26,10 @@ import { BusinessUnitMainPanel } from "./business-unit/BusinessUnitMain.panel";
 import {
   DEMO_FORMS_ALERTS,
   DEMO_FORMS_WIDGETS,
+  DEMO_ICONS,
   DEMO_LAYOUTS_CARD,
   DEMO_LAYOUTS_GRID,
+  DEMO_USER_PROFILE,
 } from "./company.routes.const";
 import { DemoAlertsPanel } from "./demos/forms/alerts/DemoAlerts.panel";
 import DemoFormsPanel from "./demos/forms/widgets/DemoForms.panel";
@@ -47,6 +49,8 @@ import { SetupMainPanel } from "./setup/Setup.panel";
 import { SETUP_MAIN } from "./setup/setup.routes.consts";
 import { TeamMainPanel } from "./team/Team.panel";
 import { TEAM_MAIN } from "./team/team.routes.consts";
+import { ProfilePage } from "./user-profile";
+import { IconsPage } from "./icons";
 
 export const CompanyPage = () => {
   const [activeTab, setActiveTab] = useState(EMPLOYEE_MAIN);
@@ -185,6 +189,24 @@ export const CompanyPage = () => {
                           >
                             Card Layout
                           </DropdownItem>
+                          <DropdownItem
+                            className={`font-weight-bold ${
+                              activeTab === DEMO_ICONS ? "bg-lighter" : ""
+                            }`}
+                            onClick={() => setActiveTab(DEMO_ICONS)}
+                          >
+                            Icons
+                          </DropdownItem>
+                          <DropdownItem
+                            className={`font-weight-bold ${
+                              activeTab === DEMO_USER_PROFILE
+                                ? "bg-lighter"
+                                : ""
+                            }`}
+                            onClick={() => setActiveTab(DEMO_USER_PROFILE)}
+                          >
+                            User profile
+                          </DropdownItem>
                         </DropdownMenu>
                       </Dropdown>
                     </FormGroup>
@@ -233,6 +255,12 @@ export const CompanyPage = () => {
                   </TabPane>
                   <TabPane tabId={DEMO_FORMS_ALERTS}>
                     <DemoAlertsPanel />
+                  </TabPane>
+                  <TabPane tabId={DEMO_USER_PROFILE}>
+                    <ProfilePage />
+                  </TabPane>
+                  <TabPane tabId={DEMO_ICONS}>
+                    <IconsPage />
                   </TabPane>
                 </TabContent>
               </CardBody>

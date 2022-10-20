@@ -31,8 +31,9 @@ import {
 } from "reactstrap";
 // core components
 import { UserHeader } from "components/headers";
+import profileAvatar from "assets/img/theme/team-4-800x800.jpg";
 
-export const Profile = () => {
+export const ProfilePage = () => {
   return (
     <>
       <UserHeader />
@@ -48,7 +49,7 @@ export const Profile = () => {
                       <img
                         alt="..."
                         className="rounded-circle"
-                        src={require("../../assets/img/theme/team-4-800x800.jpg")}
+                        src={profileAvatar}
                       />
                     </a>
                   </div>

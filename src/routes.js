@@ -15,8 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import { Profile } from "pages/user-profile";
-import { Icons } from "pages/icons";
+
 import { WorkOrdersPage } from "pages/work-orders";
 import { WORK_ORDERS_PAGE } from "routes.const";
 import { MaintenancePage } from "pages/maintenance";
@@ -49,7 +48,7 @@ var routes = [
     name: "Home",
     icon: "ni ni-tv-2 text-primary",
     component: HomePage,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: `${WORK_ORDERS_PAGE}`,
@@ -135,21 +134,5 @@ var routes = [
     component: CompanyPage,
     layout: "/admin",
   },
-  // {
-  //   path: "/icons",
-  //   name: "Icons",
-  //   icon: "ni ni-planet text-info",
-  //   component: Icons,
-  //   layout: "/admin",
-  // },
-  // {
-  //   path: "/user-profile",
-  //   name: "User Profile",
-  //   icon: "ni ni-single-02 text-primary",
-  //   component: Profile,
-  //   layout: "/admin",
-  // },
- 
- 
 ];
 export default routes;
