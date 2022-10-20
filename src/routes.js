@@ -15,16 +15,8 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-// import Index from "views/Index.js";
 import { Profile } from "pages/user-profile";
-// import Maps from "views/examples/Maps.js";
-// import Register from "views/examples/Register.js";
-// import Login from "views/examples/Login.js";
-// import Tables from "views/examples/Tables.js";
 import { Icons } from "pages/icons";
-// import Employees from "views/examples/employees/Employees";
-// import Groups from "views/examples/Groups";
-// import Documents from "views/examples/Documents";
 import { WorkOrdersPage } from "pages/work-orders";
 import { WORK_ORDERS_PAGE } from "routes.const";
 import { MaintenancePage } from "pages/maintenance";
@@ -157,6 +149,7 @@ var routes = [
   //   component: Profile,
   //   layout: "/admin",
   // },
+ 
  
 ];
 export default routes;
