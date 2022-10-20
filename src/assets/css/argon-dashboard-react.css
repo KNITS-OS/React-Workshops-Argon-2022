@@ -4525,7 +4525,7 @@ input[type="button"].btn-block {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .navbar-brand {
@@ -6924,7 +6924,7 @@ button.bg-darker:focus {
 }
 
 .border-bottom {
-  border-bottom: 1px solid var(--lighter) !important;
+  border-bottom: 0.5px solid var(--gray) !important;
 }
 
 .border-left {

@@ -21,7 +21,7 @@ export const BoxHeader = () => {
       <div
         className="header"
         style={{
-          minHeight: "150px",
+          minHeight: "227px",
         }}
       >
         <span className="mask bg-primary" />
