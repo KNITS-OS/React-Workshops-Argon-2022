@@ -1,6 +1,4 @@
-//work-orders
 export const WORK_ORDERS_PAGE = "/work-orders";
-//maintenance
 export const MAINTENANCE_PAGE = "/maintenance";
 export const ANALYTICS_PAGE = "/analytics";
 export const REQUESTS_PAGE = "/documents/new-document";
