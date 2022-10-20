@@ -49,8 +49,16 @@ import { VENDORS_CUSTOMERS_PAGE } from "routes.const";
 import { VendorsCustomersPage } from "pages/vendors-customers";
 import { COMPANY_ROUTE } from "routes.const";
 import { CompanyPage } from "pages/company";
+import { HomePage } from "pages/home";
 
 var routes = [
+  {
+    path: "/index",
+    name: "Home",
+    icon: "ni ni-tv-2 text-primary",
+    component: HomePage,
+    layout: "/admin"
+  },
   {
     path: `${WORK_ORDERS_PAGE}`,
     name: "Work Orders",
@@ -135,56 +143,20 @@ var routes = [
     component: CompanyPage,
     layout: "/admin",
   },
-  {
-    path: "/icons",
-    name: "Icons",
-    icon: "ni ni-planet text-info",
-    component: Icons,
-    layout: "/admin",
-  },
-  {
-    path: "/user-profile",
-    name: "User Profile",
-    icon: "ni ni-single-02 text-primary",
-    component: Profile,
-    layout: "/admin",
-  },
-
   // {
-  //   path: "/index",
-  //   name: "Dashboard",
-  //   icon: "ni ni-tv-2 text-info",
-  //   component: Index,
+  //   path: "/icons",
+  //   name: "Icons",
+  //   icon: "ni ni-planet text-info",
+  //   component: Icons,
   //   layout: "/admin",
   // },
   // {
-  //   path: "/maps",
-  //   name: "Maps",
-  //   icon: "ni ni-pin-3 text-info",
-  //   component: Maps,
+  //   path: "/user-profile",
+  //   name: "User Profile",
+  //   icon: "ni ni-single-02 text-primary",
+  //   component: Profile,
   //   layout: "/admin",
   // },
-  // {
-  //   path: "/tables",
-  //   name: "Tables",
-  //   icon: "ni ni-bullet-list-67 text-info",
-  //   component: Tables,
-  //   layout: "/admin",
-  // },
-  // {
-  //   path: "/login",
-  //   name: "Login",
-  //   icon: "ni ni-key-25 text-info",
-  //   component: Login,
-  //   layout: "/auth",
-  // },
-  // {
-  //   path: "/register",
-  //   name: "Register",
-  //   icon: "ni ni-circle-08 text-info",
-  //   component: Register,
-  //   layout: "/auth",
-  // },
-  // {
+ 
 ];
 export default routes;
