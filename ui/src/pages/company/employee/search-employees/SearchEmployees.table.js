@@ -1,6 +1,9 @@
 import { TwoMouseEventActionButtons } from "components/widgets/react-table";
 
-export const employeesTableColumns = ({ onDetailsButtonClick, onRemoveButtonClick }) => {
+export const employeesTableColumns = ({
+  onDetailsButtonClick,
+  onRemoveButtonClick,
+}) => {
   return [
     {
       accessor: "id",
@@ -15,11 +18,11 @@ export const employeesTableColumns = ({ onDetailsButtonClick, onRemoveButtonClic
       Header: "Last Name",
     },
     {
-      accessor: "jobTitle.name",
+      accessor: "title",
       Header: "Job Title",
     },
     {
-      accessor: "businessUnit.name",
+      accessor: "businessUnit",
       Header: "Business Unit",
     },
     {

@@ -17,5 +17,7 @@ export const businessUnitsData = [
 ];
 
 export const randomBusinessUnit = () => {
-  return businessUnitsData[randomIntFromInterval(0, businessUnitsData.length - 1)];
+  return businessUnitsData[
+    randomIntFromInterval(0, businessUnitsData.length - 1)
+  ];
 };

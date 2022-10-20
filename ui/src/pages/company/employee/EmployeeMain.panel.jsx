@@ -5,8 +5,7 @@ import { TabContent, TabPane } from "reactstrap";
 import { businessUnitsData } from "__mocks/data/business-units-mocks";
 import { countries } from "__mocks/data/countries-mocks";
 import { departmentsData } from "__mocks/data/departments-mocks";
-import { mockEmployees } from "__mocks/data/employees-mocks";
-import { jobTitlesData } from "__mocks/data/jobTitles-mocks";
+
 import {
   businessUnitsDataAsSelectOptions,
   countriesDataAsSelectOptions,
@@ -16,8 +15,14 @@ import {
 
 import { CreateEmployeePanel } from "./create-employee/CreateEmployee.panel";
 import { EmployeeDetailsPanel } from "./employee-details/EmployeeDetails.panel";
-import { EMPLOYEE_CREATE, EMPLOYEE_DETAILS, EMPLOYEE_SEARCH } from "./employee.routes.consts";
+import {
+  EMPLOYEE_CREATE,
+  EMPLOYEE_DETAILS,
+  EMPLOYEE_SEARCH,
+} from "./employee.routes.consts";
 import { SearchEmployeesPanel } from "./search-employees/SearchEmployees.panel";
+import { employeeService } from "api/employees";
+import { jobTitlesData } from "__mocks/data/jobTitles-mock";
 
 export const EmployeeMainPanel = () => {
   const [activePanel, setActivePanel] = useState(EMPLOYEE_SEARCH);
@@ -29,29 +34,30 @@ export const EmployeeMainPanel = () => {
   const businessUnits = businessUnitsDataAsSelectOptions(businessUnitsData);
   const jobtitles = jobTitlesDataAsSelectOptions(jobTitlesData);
 
-  const onCreateNew = newEmployee => {
-    console.log(newEmployee);
+  const onCreateNew = async (newEmployee) => {
+    await employeeService.createEmployee(newEmployee);
   };
 
-  const onSave = partialEmployee => {
-    console.log(partialEmployee);
-    return partialEmployee;
+  const onSave = async (partialEmployee) => {
+    await employeeService.updateEmployee(partialEmployee);
   };
 
-  const onViewEmployeeDetails = id => {
-    const foundEmployee = employees.find(employee => employee.id === id);
-    setCurrentEmployee(foundEmployee);
+  const onViewEmployeeDetails = async (id) => {
+    const { data } = await employeeService.getEmployeeById(id);
+    console.log(data);
+    setCurrentEmployee(data);
     setActivePanel(EMPLOYEE_DETAILS);
   };
 
-  const onSearchEmployees = async employeeSearchRequest => {
-    console.log(employeeSearchRequest);
-    //change employees according to query result
-    setEmployees(mockEmployees());
+  const onSearchEmployees = async (employeeSearchRequest) => {
+    const queryParams = new URLSearchParams(employeeSearchRequest);
+    const { data } = await employeeService.searchEmployees(queryParams);
+    setEmployees(data);
   };
 
-  const onDelete = id => {
-    console.log(id);
+  const onDelete = async (id) => {
+    employeeService.deleteEmployee(id);
+    setEmployees(employees.filter((employee) => employee.id !== parseInt(id)));
   };
 
   return (
@@ -71,7 +77,10 @@ export const EmployeeMainPanel = () => {
           />
         </TabPane>
         <TabPane tabId={EMPLOYEE_CREATE}>
-          <CreateEmployeePanel onSaveNewEmployee={onCreateNew} navigateToPanel={setActivePanel} />
+          <CreateEmployeePanel
+            onSaveNewEmployee={onCreateNew}
+            navigateToPanel={setActivePanel}
+          />
         </TabPane>
         <TabPane tabId={EMPLOYEE_DETAILS}>
           <EmployeeDetailsPanel
