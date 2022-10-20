@@ -6293,7 +6293,7 @@ a.close.disabled {
   position: absolute;
   z-index: 1070;
   display: block;
-  margin: 0;
+  margin: 10px;
   font-family: Open Sans, sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -6339,8 +6339,6 @@ a.close.disabled {
 .bs-tooltip-top .arrow::before,
 .bs-tooltip-auto[x-placement^="top"] .arrow::before {
   top: 0;
-  border-width: 0.4rem 0.4rem 0;
-  border-top-color: #000;
 }
 
 .bs-tooltip-right,
@@ -6350,14 +6348,10 @@ a.close.disabled {
 .bs-tooltip-right .arrow,
 .bs-tooltip-auto[x-placement^="right"] .arrow {
   left: 0;
-  width: 0.4rem;
-  height: 0.8rem;
 }
 .bs-tooltip-right .arrow::before,
 .bs-tooltip-auto[x-placement^="right"] .arrow::before {
   right: 0;
-  border-width: 0.4rem 0.4rem 0.4rem 0;
-  border-right-color: #000;
 }
 
 .bs-tooltip-bottom,
@@ -6371,8 +6365,6 @@ a.close.disabled {
 .bs-tooltip-bottom .arrow::before,
 .bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
   bottom: 0;
-  border-width: 0 0.4rem 0.4rem;
-  border-bottom-color: #000;
 }
 
 .bs-tooltip-left,
@@ -6382,22 +6374,17 @@ a.close.disabled {
 .bs-tooltip-left .arrow,
 .bs-tooltip-auto[x-placement^="left"] .arrow {
   right: 0;
-  width: 0.4rem;
-  height: 0.8rem;
 }
 .bs-tooltip-left .arrow::before,
 .bs-tooltip-auto[x-placement^="left"] .arrow::before {
   left: 0;
-  border-width: 0.4rem 0 0.4rem 0.4rem;
-  border-left-color: #000;
 }
 
 .tooltip-inner {
-  max-width: 200px;
   padding: 0.25rem 0.5rem;
   color: #fff;
   text-align: center;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.54);
   border-radius: 0.375rem;
 }
 
@@ -16374,7 +16361,7 @@ a.btn-icon-only {
 
 @media (min-width: 768px) {
   .navbar-vertical.navbar-expand-md.fixed-left + .main-content {
-    margin-left: 250px;
+    margin-left: 100px;
   }
   .navbar-vertical.navbar-expand-md.fixed-right + .main-content {
     margin-right: 250px;
@@ -17575,7 +17562,7 @@ textarea[resize="horizontal"] {
 .navbar-vertical .navbar-nav .nav-link {
   padding-left: 1rem;
   padding-right: 1rem;
-  font-size: 0.9rem;
+  font-size: 2rem;
 }
 .navbar-vertical .navbar-nav .nav-link.active {
   position: relative;
@@ -17824,7 +17811,7 @@ textarea[resize="horizontal"] {
     top: 0;
     bottom: 0;
     width: 100%;
-    max-width: 250px;
+    max-width: 100px;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     overflow-y: auto;

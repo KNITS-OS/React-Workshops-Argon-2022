@@ -52,6 +52,7 @@ import { CompanyPage } from "pages/company";
 
 var routes = [
   {
+    id: "work-orders",
     path: `${WORK_ORDERS_PAGE}`,
     name: "Work Orders",
     icon: "ni ni-single-copy-04 text-info",
@@ -59,6 +60,7 @@ var routes = [
     layout: "/admin",
   },
   {
+    id: "maintenance",
     path: `${MAINTENANCE_PAGE}`,
     name: "Preventive Maintenance",
     icon: "ni ni-building text-info",
@@ -66,6 +68,7 @@ var routes = [
     layout: "/admin",
   },
   {
+    id: "analytics",
     path: `${ANALYTICS_PAGE}`,
     name: "Analytics",
     icon: "ni ni-sound-wave text-info",
@@ -73,6 +76,7 @@ var routes = [
     layout: "/admin",
   },
   {
+    id: "requests",
     path: `${REQUESTS_PAGE}`,
     name: "Requests",
     icon: "ni ni-send text-info",
@@ -80,6 +84,7 @@ var routes = [
     layout: "/admin",
   },
   {
+    id: "locations",
     path: `${LOCATIONS_PAGE}`,
     name: "Locations",
     icon: "ni ni-square-pin text-info",
@@ -87,6 +92,7 @@ var routes = [
     layout: "/admin",
   },
   {
+    id: "assets",
     path: `${ASSETS_PAGE}`,
     name: "Assets",
     icon: "ni ni-app text-info",
@@ -94,6 +100,7 @@ var routes = [
     layout: "/admin",
   },
   {
+    id: "parts-inventory",
     path: `${PARTS_INVENTORY_PAGE}`,
     name: "Parts/Inventory",
     icon: "ni ni-key-25 text-info",
@@ -101,6 +108,7 @@ var routes = [
     layout: "/admin",
   },
   {
+    id: "purchase-orders",
     path: `${PURCHASE_ORDERS_PAGE}`,
     name: "Purchase Orders",
     icon: "ni ni-money-coins text-info",
@@ -108,6 +116,7 @@ var routes = [
     layout: "/admin",
   },
   {
+    id: "meters",
     path: `${METERS_PAGE}`,
     name: "Meters",
     icon: "ni ni-user-run text-info",
@@ -115,6 +124,7 @@ var routes = [
     layout: "/admin",
   },
   {
+    id: "people-teams",
     path: `${PEOPLE_TEAMS_PAGE}`,
     name: "People & Teams",
     icon: "ni ni-badge text-info",
@@ -122,6 +132,7 @@ var routes = [
     layout: "/admin",
   },
   {
+    id: "vendors-customers",
     path: `${VENDORS_CUSTOMERS_PAGE}`,
     name: "Vendors & Customers",
     icon: "ni ni-circle-08 text-info",
@@ -129,6 +140,7 @@ var routes = [
     layout: "/admin",
   },
   {
+    id: "company",
     path: `${COMPANY_ROUTE}`,
     name: "Company",
     icon: "ni ni-briefcase-24 text-primary",
@@ -136,6 +148,7 @@ var routes = [
     layout: "/admin",
   },
   {
+    id: "icons",
     path: "/icons",
     name: "Icons",
     icon: "ni ni-planet text-info",
@@ -143,6 +156,7 @@ var routes = [
     layout: "/admin",
   },
   {
+    id: "user-profile",
     path: "/user-profile",
     name: "User Profile",
     icon: "ni ni-single-02 text-primary",
@@ -150,41 +164,5 @@ var routes = [
     layout: "/admin",
   },
 
-  // {
-  //   path: "/index",
-  //   name: "Dashboard",
-  //   icon: "ni ni-tv-2 text-info",
-  //   component: Index,
-  //   layout: "/admin",
-  // },
-  // {
-  //   path: "/maps",
-  //   name: "Maps",
-  //   icon: "ni ni-pin-3 text-info",
-  //   component: Maps,
-  //   layout: "/admin",
-  // },
-  // {
-  //   path: "/tables",
-  //   name: "Tables",
-  //   icon: "ni ni-bullet-list-67 text-info",
-  //   component: Tables,
-  //   layout: "/admin",
-  // },
-  // {
-  //   path: "/login",
-  //   name: "Login",
-  //   icon: "ni ni-key-25 text-info",
-  //   component: Login,
-  //   layout: "/auth",
-  // },
-  // {
-  //   path: "/register",
-  //   name: "Register",
-  //   icon: "ni ni-circle-08 text-info",
-  //   component: Register,
-  //   layout: "/auth",
-  // },
-  // {
 ];
 export default routes;

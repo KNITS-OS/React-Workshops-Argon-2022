@@ -23,17 +23,11 @@ import { PropTypes } from "prop-types";
 
 // reactstrap components
 import {
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
   Collapse,
   DropdownMenu,
   DropdownItem,
   UncontrolledDropdown,
   DropdownToggle,
-  FormGroup,
   Form,
   Input,
   InputGroupAddon,
@@ -45,16 +39,27 @@ import {
   NavItem,
   NavLink,
   Nav,
-  Progress,
-  Table,
   Container,
   Row,
   Col,
+  Tooltip,
 } from "reactstrap";
 
 var ps;
 
 export const Sidebar = (props) => {
+  const [tooltipOpen, setTooltipOpen] = useState(false);
+  const [tooltipId, setTooltipId] = useState("");
+
+  const toggle = (id) => {
+    if (tooltipOpen && tooltipId === id) {
+      setTooltipOpen(false);
+    } else {
+      setTooltipOpen(true);
+      setTooltipId(id);
+    }
+  };
+
   const [collapseOpen, setCollapseOpen] = useState();
   // verifies if routeName is the one active (in browser input)
   const activeRoute = (routeName) => {
@@ -78,9 +83,22 @@ export const Sidebar = (props) => {
             tag={NavLinkRRD}
             onClick={closeCollapse}
             activeClassName="active"
+            style={{ position: "relative" }}
           >
-            <i className={prop.icon} />
-            {prop.name}
+            <div>
+              <i className={prop.icon} id={"Tooltip-" + prop.id} />
+            </div>
+
+            <Tooltip
+              key={key}
+              isOpen={prop.id === tooltipId && tooltipOpen}
+              placement="right"
+              target={"Tooltip-" + prop.id}
+              toggle={() => toggle(prop.id)}
+              style={{ position: "absolute", left: "50px", top: "-16px" }}
+            >
+              {prop.name}
+            </Tooltip>
           </NavLink>
         </NavItem>
       );
@@ -233,33 +251,69 @@ export const Sidebar = (props) => {
           {/* Divider */}
           <hr className="my-3" />
           {/* Heading */}
-          <h6 className="navbar-heading text-muted">Documentation</h6>
+          {/* <h6 className="navbar-heading text-muted">Documentation</h6> */}
           {/* Navigation */}
           <Nav className="mb-md-3" navbar>
             <NavItem>
-              <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/#/documentation/overview?ref=adr-admin-sidebar">
-                <i className="ni ni-spaceship" />
-                Getting started
+              <NavLink
+                href="https://demos.creative-tim.com/argon-dashboard-react/#/documentation/overview?ref=adr-admin-sidebar"
+                style={{ position: "relative" }}
+              >
+                <div id="Tooltip-getting-started">
+                  <i className="ni ni-spaceship" />
+                </div>
+                <Tooltip
+                  key="Tooltip-getting-started"
+                  isOpen={
+                    "Tooltip-getting-started" === tooltipId && tooltipOpen
+                  }
+                  placement="right"
+                  target={"Tooltip-getting-started"}
+                  toggle={() => toggle("Tooltip-getting-started")}
+                  style={{ position: "absolute", left: "50px", top: "-16px" }}
+                >
+                  Getting started
+                </Tooltip>
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/#/documentation/colors?ref=adr-admin-sidebar">
-                <i className="ni ni-palette" />
-                Foundation
+              <NavLink
+                href="https://demos.creative-tim.com/argon-dashboard-react/#/documentation/colors?ref=adr-admin-sidebar"
+                style={{ position: "relative" }}
+              >
+                <div id="Tooltip-Foundation">
+                  <i className="ni ni-palette" />
+                </div>
+                <Tooltip
+                  key="Tooltip-Foundation"
+                  isOpen={"Tooltip-Foundation" === tooltipId && tooltipOpen}
+                  placement="right"
+                  target={"Tooltip-Foundation"}
+                  toggle={() => toggle("Tooltip-Foundation")}
+                  style={{ position: "absolute", left: "50px", top: "-16px" }}
+                >
+                  Foundation
+                </Tooltip>
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/#/documentation/alerts?ref=adr-admin-sidebar">
-                <i className="ni ni-ui-04" />
-                Components
-              </NavLink>
-            </NavItem>
-          </Nav>
-          <Nav className="mb-md-3" navbar>
-            <NavItem className="active-pro active">
-              <NavLink href="https://www.creative-tim.com/product/argon-dashboard-pro-react?ref=adr-admin-sidebar">
-                <i className="ni ni-spaceship" />
-                Upgrade to PRO
+              <NavLink
+                href="https://demos.creative-tim.com/argon-dashboard-react/#/documentation/alerts?ref=adr-admin-sidebar"
+                style={{ position: "relative" }}
+              >
+                <div id="Tooltip-Components">
+                  <i className="ni ni-ui-04" />
+                </div>
+                <Tooltip
+                  key="Tooltip-Components"
+                  isOpen={"Tooltip-Components" === tooltipId && tooltipOpen}
+                  placement="right"
+                  target={"Tooltip-Components"}
+                  toggle={() => toggle("Tooltip-Components")}
+                  style={{ position: "absolute", left: "50px", top: "-16px" }}
+                >
+                  Components
+                </Tooltip>
               </NavLink>
             </NavItem>
           </Nav>
@@ -267,10 +321,6 @@ export const Sidebar = (props) => {
       </Container>
     </Navbar>
   );
-};
-
-Sidebar.defaultProps = {
-  routes: [{}],
 };
 
 Sidebar.propTypes = {
