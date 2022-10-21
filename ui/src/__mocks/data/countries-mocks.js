@@ -677,7 +677,7 @@ const countriesWithIds = () => {
 };
 
 export const countries = () => {
-  if (countriesData.length == 0) {
+  if (countriesData.length === 0) {
     const calculatedCountries = countriesWithIds();
     countriesData.push(...calculatedCountries);
   }
