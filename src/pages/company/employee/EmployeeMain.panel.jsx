@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 import { TabContent, TabPane } from "reactstrap";
+import { useDispatch, useSelector } from "react-redux";
 
 import { businessUnitsData } from "__mocks/data/business-units-mocks";
 import { countries } from "__mocks/data/countries-mocks";
 import { departmentsData } from "__mocks/data/departments-mocks";
-import { mockEmployees } from "__mocks/data/employees-mocks";
 import { jobTitlesData } from "__mocks/data/jobTitles-mocks";
 import {
   businessUnitsDataAsSelectOptions,
@@ -16,42 +16,55 @@ import {
 
 import { CreateEmployeePanel } from "./create-employee/CreateEmployee.panel";
 import { EmployeeDetailsPanel } from "./employee-details/EmployeeDetails.panel";
-import { EMPLOYEE_CREATE, EMPLOYEE_DETAILS, EMPLOYEE_SEARCH } from "./employee.routes.consts";
+import {
+  EMPLOYEE_CREATE,
+  EMPLOYEE_DETAILS,
+  EMPLOYEE_SEARCH,
+} from "./employee.routes.consts";
 import { SearchEmployeesPanel } from "./search-employees/SearchEmployees.panel";
+import {
+  createEmployee,
+  deleteEmployee,
+  searchEmployee,
+  searchEmployees,
+  updateEmployee,
+} from "redux/features";
+import { selectAllEmployeeData } from "redux/features";
 
 export const EmployeeMainPanel = () => {
   const [activePanel, setActivePanel] = useState(EMPLOYEE_SEARCH);
-  const [employees, setEmployees] = useState([]);
+
   const [currentEmployee, setCurrentEmployee] = useState({});
+
+  const dispatch = useDispatch();
+  const employees = useSelector(selectAllEmployeeData);
 
   const departments = departmentDataAsSelectOptions(departmentsData);
   const countriesData = countriesDataAsSelectOptions(countries());
   const businessUnits = businessUnitsDataAsSelectOptions(businessUnitsData);
   const jobtitles = jobTitlesDataAsSelectOptions(jobTitlesData);
 
-  const onCreateNew = newEmployee => {
-    console.log(newEmployee);
+  const onCreateNew = (newEmployee) => {
+    dispatch(createEmployee(newEmployee));
   };
 
-  const onSave = partialEmployee => {
-    console.log(partialEmployee);
-    return partialEmployee;
+  const onSave = (partialEmployee) => {
+    dispatch(updateEmployee(partialEmployee));
   };
 
-  const onViewEmployeeDetails = id => {
-    const foundEmployee = employees.find(employee => employee.id === id);
+  const onViewEmployeeDetails = (id) => {
+    const foundEmployee = employees.find((employee) => employee.id === id);
     setCurrentEmployee(foundEmployee);
+    dispatch(searchEmployee(id));
     setActivePanel(EMPLOYEE_DETAILS);
   };
 
-  const onSearchEmployees = async employeeSearchRequest => {
-    console.log(employeeSearchRequest);
-    //change employees according to query result
-    setEmployees(mockEmployees());
+  const onSearchEmployees = (employeeSearchRequest) => {
+    dispatch(searchEmployees(employeeSearchRequest));
   };
 
-  const onDelete = id => {
-    console.log(id);
+  const onDelete = (id) => {
+    dispatch(deleteEmployee(parseInt(id)));
   };
 
   return (
@@ -71,7 +84,10 @@ export const EmployeeMainPanel = () => {
           />
         </TabPane>
         <TabPane tabId={EMPLOYEE_CREATE}>
-          <CreateEmployeePanel onSaveNewEmployee={onCreateNew} navigateToPanel={setActivePanel} />
+          <CreateEmployeePanel
+            onSaveNewEmployee={onCreateNew}
+            navigateToPanel={setActivePanel}
+          />
         </TabPane>
         <TabPane tabId={EMPLOYEE_DETAILS}>
           <EmployeeDetailsPanel

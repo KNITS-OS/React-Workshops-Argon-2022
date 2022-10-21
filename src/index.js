@@ -24,20 +24,23 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/css/argon-dashboard-react.css";
 import "./assets/css/site.css";
 import "sweetalert2/dist/sweetalert2.min.css";
-
+import { Provider } from "react-redux";
 import "components/widgets/react-table/styles/reactTable.css";
 
 import AdminLayout from "layouts/Admin.js";
 import AuthLayout from "layouts/Auth.js";
+import { store } from "redux/app";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <BrowserRouter>
-    <Switch>
-      <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-      <Route path="/auth" render={(props) => <AuthLayout {...props} />} />
-      <Redirect from="/" to="/admin/index" />
-    </Switch>
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
+        <Route path="/auth" render={(props) => <AuthLayout {...props} />} />
+        <Redirect from="/" to="/admin/index" />
+      </Switch>
+    </BrowserRouter>
+  </Provider>
 );

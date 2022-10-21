@@ -2,10 +2,10 @@ import { Card, CardBody, CardHeader, Container } from "reactstrap";
 
 import { BoxHeader } from "@/views/layout/headers";
 
-export const ContractMainPanel = (): JSX.Element => {
+export const ContractMainPanel = () => {
   return (
     <>
-      <BoxHeader />
+      <BoxHeader />S
       <Container className="mt--6" fluid>
         <Card className="mb-4">
           <CardHeader>

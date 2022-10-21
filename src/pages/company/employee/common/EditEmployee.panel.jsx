@@ -6,20 +6,26 @@ import { InputField } from "components/widgets";
 
 import { EMPLOYEE_SEARCH } from "../employee.routes.consts";
 
-export const EditEmployeesPanel = ({ onSave, navigateToPanel, employee, title }) => {
+export const EditEmployeesPanel = ({
+  onSave,
+  navigateToPanel,
+  employee,
+  title,
+}) => {
   const [employeeUi, setEmployeeUi] = useState(employee);
 
   useEffect(() => {
     setEmployeeUi(employee);
   }, [employee]);
 
-  const onSaveUiEvent = e => {
+  const onSaveUiEvent = (e) => {
     e.preventDefault();
-    onSave(employee);
+    onSave(employeeUi);
   };
 
-  const onResetUiEvent = e => {
+  const onResetUiEvent = (e) => {
     e.preventDefault();
+    setEmployeeUi(employee);
     onSave(employee);
   };
 
@@ -48,7 +54,9 @@ export const EditEmployeesPanel = ({ onSave, navigateToPanel, employee, title })
             </CardHeader>
             <CardBody>
               <Form>
-                <h6 className="heading-small text-muted mb-4">User information</h6>
+                <h6 className="heading-small text-muted mb-4">
+                  User information
+                </h6>
                 <div className="pl-lg-4">
                   <Row>
                     <Col lg="6">
@@ -57,7 +65,7 @@ export const EditEmployeesPanel = ({ onSave, navigateToPanel, employee, title })
                         label="First name"
                         value={employeeUi.firstName || ""}
                         type="text"
-                        onChange={e =>
+                        onChange={(e) =>
                           setEmployeeUi({
                             ...employeeUi,
                             firstName: e.target.value,
@@ -71,7 +79,7 @@ export const EditEmployeesPanel = ({ onSave, navigateToPanel, employee, title })
                         label="Last name"
                         value={employeeUi.lastName || ""}
                         type="text"
-                        onChange={e =>
+                        onChange={(e) =>
                           setEmployeeUi({
                             ...employeeUi,
                             lastName: e.target.value,
@@ -85,7 +93,11 @@ export const EditEmployeesPanel = ({ onSave, navigateToPanel, employee, title })
                   <Button color="primary" type="submit" onClick={onSaveUiEvent}>
                     Save
                   </Button>
-                  <Button color="primary" type="submit" onClick={onResetUiEvent}>
+                  <Button
+                    color="primary"
+                    type="submit"
+                    onClick={onResetUiEvent}
+                  >
                     Reset
                   </Button>
                 </div>
