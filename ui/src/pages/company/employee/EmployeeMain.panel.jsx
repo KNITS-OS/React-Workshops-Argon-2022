@@ -21,12 +21,14 @@ import {
   EMPLOYEE_SEARCH,
 } from "./employee.routes.consts";
 import { SearchEmployeesPanel } from "./search-employees/SearchEmployees.panel";
-import { employeeService } from "api/employees";
+import { employeeService } from "api";
 import { jobTitlesData } from "__mocks/data/jobTitles-mock";
+import { alerts } from "components/feedback";
 
 export const EmployeeMainPanel = () => {
   const [activePanel, setActivePanel] = useState(EMPLOYEE_SEARCH);
   const [employees, setEmployees] = useState([]);
+
   const [currentEmployee, setCurrentEmployee] = useState({});
 
   const departments = departmentDataAsSelectOptions(departmentsData);
@@ -35,29 +37,71 @@ export const EmployeeMainPanel = () => {
   const jobtitles = jobTitlesDataAsSelectOptions(jobTitlesData);
 
   const onCreateNew = async (newEmployee) => {
-    await employeeService.createEmployee(newEmployee);
+    try {
+      await employeeService.createEmployee(newEmployee);
+
+      alerts.successAlert("Saved with success", "Success");
+      return await Promise.resolve();
+    } catch (err) {
+      let message = "Unknown Error";
+      if (err) message = err.message;
+      alerts.errorAlert(message, "Attention!");
+      return await Promise.reject(err);
+    }
   };
 
   const onSave = async (partialEmployee) => {
-    await employeeService.updateEmployee(partialEmployee);
+    try {
+      await employeeService.updateEmployee(partialEmployee);
+      alerts.successAlert("Saved with success", "Success");
+      return await Promise.resolve();
+    } catch (err) {
+      let message = "Unknown Error";
+      if (err) message = err.message;
+      alerts.errorAlert(message, "Attention!");
+      return await Promise.reject(err);
+    }
   };
 
   const onViewEmployeeDetails = async (id) => {
-    const { data } = await employeeService.getEmployeeById(id);
-    console.log(data);
-    setCurrentEmployee(data);
+    const foundEmployee = employees.find((employee) => employee.id === id);
+    setCurrentEmployee(foundEmployee);
     setActivePanel(EMPLOYEE_DETAILS);
   };
 
   const onSearchEmployees = async (employeeSearchRequest) => {
-    const queryParams = new URLSearchParams(employeeSearchRequest);
-    const { data } = await employeeService.searchEmployees(queryParams);
-    setEmployees(data);
+    try {
+      const { data } = await employeeService.searchEmployees(
+        employeeSearchRequest
+      );
+      setEmployees(data);
+      return await Promise.resolve();
+    } catch (err) {
+      let message = "Unknown Error";
+      if (err) message = err.message;
+      alerts.errorAlert(message, "Attention!");
+      return await Promise.reject(err);
+    }
   };
 
   const onDelete = async (id) => {
-    employeeService.deleteEmployee(id);
-    setEmployees(employees.filter((employee) => employee.id !== parseInt(id)));
+    const { isConfirmed } = await alerts.confirmActionDanger("Are you sure?");
+    if (isConfirmed) {
+      await onDeleteConfirmed(id);
+    }
+  };
+
+  const onDeleteConfirmed = async (id) => {
+    try {
+      await employeeService.deleteEmployee(id);
+      alerts.successAlert("Employee deleted with success", "Success");
+      return await Promise.resolve();
+    } catch (err) {
+      let message = "Unknown Error";
+      if (err) message = err.message;
+      alerts.errorAlert(message, "Attention!");
+      return await Promise.reject(err);
+    }
   };
 
   return (
