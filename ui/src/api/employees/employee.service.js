@@ -11,14 +11,12 @@ const findAllEmployees = () => httpCommon.get(`${EMPLOYEE_ROUTE}`);
 const getEmployeeById = (id) => httpCommon.get(`${EMPLOYEE_ROUTE}/${id}`);
 
 const updateEmployee = (partialEmployee) => {
-  httpCommon.put(
-    `${EMPLOYEE_ROUTE}/${partialEmployee.id}`,
-    JSON.stringify(partialEmployee)
-  );
+  const { id } = partialEmployee;
+  return httpCommon.put(`${EMPLOYEE_ROUTE}/${id}`, partialEmployee);
 };
 
 const createEmployee = (newEmployee) => {
-  return httpCommon.post(`${EMPLOYEE_ROUTE}`, JSON.stringify(newEmployee));
+  return httpCommon.post(`${EMPLOYEE_ROUTE}`, newEmployee);
 };
 
 const deleteEmployee = (id) => httpCommon.delete(`${EMPLOYEE_ROUTE}/${id}`);
