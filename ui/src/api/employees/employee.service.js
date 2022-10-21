@@ -11,8 +11,9 @@ const findAllEmployees = () => httpCommon.get(`${EMPLOYEE_ROUTE}`);
 const getEmployeeById = (id) => httpCommon.get(`${EMPLOYEE_ROUTE}/${id}`);
 
 const updateEmployee = (partialEmployee) => {
-  httpCommon.put(
-    `${EMPLOYEE_ROUTE}/${partialEmployee.id}`,
+  const { id } = partialEmployee;
+  return httpCommon.put(
+    `${EMPLOYEE_ROUTE}/${id}`,
     JSON.stringify(partialEmployee)
   );
 };

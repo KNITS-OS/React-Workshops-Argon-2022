@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { TabContent, TabPane } from "reactstrap";
 
@@ -21,15 +22,20 @@ import {
   EMPLOYEE_SEARCH,
 } from "./employee.routes.consts";
 import { SearchEmployeesPanel } from "./search-employees/SearchEmployees.panel";
-import { employeeService } from "api";
 import { jobTitlesData } from "__mocks/data/jobTitles-mock";
 import { alerts } from "components/feedback";
+import { selectAllEmployeeData } from "redux/features";
+import { searchEmployees } from "redux/features";
+import { deleteEmployee } from "redux/features";
+import { updateEmployee } from "redux/features";
+import { createEmployee } from "redux/features";
 
 export const EmployeeMainPanel = () => {
   const [activePanel, setActivePanel] = useState(EMPLOYEE_SEARCH);
-  const [employees, setEmployees] = useState([]);
-
   const [currentEmployee, setCurrentEmployee] = useState({});
+
+  const dispatch = useDispatch();
+  const employees = useSelector(selectAllEmployeeData);
 
   const departments = departmentDataAsSelectOptions(departmentsData);
   const countriesData = countriesDataAsSelectOptions(countries());
@@ -37,30 +43,11 @@ export const EmployeeMainPanel = () => {
   const jobtitles = jobTitlesDataAsSelectOptions(jobTitlesData);
 
   const onCreateNew = async (newEmployee) => {
-    try {
-      await employeeService.createEmployee(newEmployee);
-
-      alerts.successAlert("Saved with success", "Success");
-      return await Promise.resolve();
-    } catch (err) {
-      let message = "Unknown Error";
-      if (err) message = err.message;
-      alerts.errorAlert(message, "Attention!");
-      return await Promise.reject(err);
-    }
+    dispatch(createEmployee(newEmployee));
   };
 
   const onSave = async (partialEmployee) => {
-    try {
-      await employeeService.updateEmployee(partialEmployee);
-      alerts.successAlert("Saved with success", "Success");
-      return await Promise.resolve();
-    } catch (err) {
-      let message = "Unknown Error";
-      if (err) message = err.message;
-      alerts.errorAlert(message, "Attention!");
-      return await Promise.reject(err);
-    }
+    dispatch(updateEmployee(partialEmployee));
   };
 
   const onViewEmployeeDetails = async (id) => {
@@ -70,18 +57,7 @@ export const EmployeeMainPanel = () => {
   };
 
   const onSearchEmployees = async (employeeSearchRequest) => {
-    try {
-      const { data } = await employeeService.searchEmployees(
-        employeeSearchRequest
-      );
-      setEmployees(data);
-      return await Promise.resolve();
-    } catch (err) {
-      let message = "Unknown Error";
-      if (err) message = err.message;
-      alerts.errorAlert(message, "Attention!");
-      return await Promise.reject(err);
-    }
+    dispatch(searchEmployees(employeeSearchRequest));
   };
 
   const onDelete = async (id) => {
@@ -92,16 +68,7 @@ export const EmployeeMainPanel = () => {
   };
 
   const onDeleteConfirmed = async (id) => {
-    try {
-      await employeeService.deleteEmployee(id);
-      alerts.successAlert("Employee deleted with success", "Success");
-      return await Promise.resolve();
-    } catch (err) {
-      let message = "Unknown Error";
-      if (err) message = err.message;
-      alerts.errorAlert(message, "Attention!");
-      return await Promise.reject(err);
-    }
+    dispatch(deleteEmployee(id));
   };
 
   return (
