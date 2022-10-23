@@ -7,7 +7,7 @@ import { employeeReducer } from "redux/features/employees/employee.reducer";
 
 const middleware = [thunk];
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   employee: employeeReducer,
 });
 
