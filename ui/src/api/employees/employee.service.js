@@ -12,14 +12,11 @@ const getEmployeeById = (id) => httpCommon.get(`${EMPLOYEE_ROUTE}/${id}`);
 
 const updateEmployee = (partialEmployee) => {
   const { id } = partialEmployee;
-  return httpCommon.put(
-    `${EMPLOYEE_ROUTE}/${id}`,
-    JSON.stringify(partialEmployee)
-  );
+  return httpCommon.put(`${EMPLOYEE_ROUTE}/${id}`, partialEmployee);
 };
 
 const createEmployee = (newEmployee) => {
-  return httpCommon.post(`${EMPLOYEE_ROUTE}`, JSON.stringify(newEmployee));
+  return httpCommon.post(`${EMPLOYEE_ROUTE}`, newEmployee);
 };
 
 const deleteEmployee = (id) => httpCommon.delete(`${EMPLOYEE_ROUTE}/${id}`);
