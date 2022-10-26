@@ -38,7 +38,8 @@ export const EmployeeMainPanel = () => {
 
   const onCreateNew = async (newEmployee) => {
     try {
-      await employeeService.createEmployee(newEmployee);
+      const { data } = await employeeService.createEmployee(newEmployee);
+      data && setEmployees([...employees, data]);
 
       alerts.successAlert("Saved with success", "Success");
       return await Promise.resolve();
@@ -52,8 +53,16 @@ export const EmployeeMainPanel = () => {
 
   const onSave = async (partialEmployee) => {
     try {
-      await employeeService.updateEmployee(partialEmployee);
+      console.log(partialEmployee);
+      const { data } = await employeeService.updateEmployee(partialEmployee);
       alerts.successAlert("Saved with success", "Success");
+      console.log(data);
+      data &&
+        setEmployees(
+          employees.map((employee) =>
+            employee.id === data.id ? data : employee
+          )
+        );
       return await Promise.resolve();
     } catch (err) {
       let message = "Unknown Error";
