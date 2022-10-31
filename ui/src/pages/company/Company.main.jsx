@@ -54,7 +54,7 @@ import { IconsPage } from "./icons";
 
 export const CompanyPage = () => {
   const [activeTab, setActiveTab] = useState(EMPLOYEE_MAIN);
-  const [activeFormMenu, setActiveFormMenu] = useState(false);
+  const [activeDemoMenu, setActiveDemoMenu] = useState(false);
   return (
     <>
       <BoxHeader />
@@ -138,8 +138,8 @@ export const CompanyPage = () => {
                       </Button>
 
                       <Dropdown
-                        isOpen={activeFormMenu}
-                        toggle={() => setActiveFormMenu(!activeFormMenu)}
+                        isOpen={activeDemoMenu}
+                        toggle={() => setActiveDemoMenu(!activeDemoMenu)}
                       >
                         <DropdownToggle
                           caret

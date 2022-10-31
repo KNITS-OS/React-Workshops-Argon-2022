@@ -15,12 +15,12 @@ export const EditEmployeesPanel = ({ onSave, navigateToPanel, employee, title })
 
   const onSaveUiEvent = e => {
     e.preventDefault();
-    onSave(employee);
+    onSave(employeeUi);
   };
 
   const onResetUiEvent = e => {
     e.preventDefault();
-    onSave(employee);
+    onSave(employeeUi);
   };
 
   return (
