@@ -18,6 +18,7 @@ import { CreateEmployeePanel } from "./create-employee/CreateEmployee.panel";
 import { EmployeeDetailsPanel } from "./employee-details/EmployeeDetails.panel";
 import { EMPLOYEE_CREATE, EMPLOYEE_DETAILS, EMPLOYEE_SEARCH } from "./employee.routes.consts";
 import { SearchEmployeesPanel } from "./search-employees/SearchEmployees.panel";
+import { alerts } from "components/feedback";
 
 export const EmployeeMainPanel = () => {
   const [activePanel, setActivePanel] = useState(EMPLOYEE_SEARCH);
@@ -31,11 +32,13 @@ export const EmployeeMainPanel = () => {
 
   const onCreateNew = newEmployee => {
     console.log(newEmployee);
+    alerts.confirmActionSuccess("Employee saved with success");
   };
 
   const onSave = partialEmployee => {
     console.log(partialEmployee);
-    return partialEmployee;
+    alerts.confirmActionSuccess("Employee saved with success");
+    //return partialEmployee;
   };
 
   const onViewEmployeeDetails = id => {
@@ -52,6 +55,7 @@ export const EmployeeMainPanel = () => {
 
   const onDelete = id => {
     console.log(id);
+    alerts.confirmActionSuccess("Employee deleted with success");
   };
 
   return (

@@ -25,7 +25,7 @@ const createOffices = howMany => {
 };
 
 export const offices = () => {
-  if (officeData.length == 0) {
+  if (officeData.length === 0) {
     const calculatedOffices = createOffices(howManyOffices);
     officeData.push(...calculatedOffices);
   }
@@ -33,7 +33,7 @@ export const offices = () => {
 };
 
 export const randomOffice = () => {
-  if (officeData.length == 0) {
+  if (officeData.length === 0) {
     offices();
   }
   return officeData[randomIntFromInterval(0, officeData.length)];

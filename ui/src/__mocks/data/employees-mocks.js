@@ -41,7 +41,7 @@ const createEmployees = howMany => {
 
 export const mockEmployees = () => {
   console.log("In mockEmployees");
-  if (employees.length == 0) {
+  if (employees.length === 0) {
     const calculatedEmployees = createEmployees(howManyEmployees);
     employees.push(...calculatedEmployees);
   }
